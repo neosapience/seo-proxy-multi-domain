@@ -9,10 +9,10 @@ server {
 
     location / {
         if ($http_user_agent ~* "kakaostory-og-reader|pinterest|googlebot|yahoo|bingbot|baiduspider|yandex|yeti|Yeti|yodaobot|gigabot|ia_archiver|facebookexternalhit|twitterbot|developers.google.com|kakaotalk-scrap|AdsBot-Naver|developers\.google\.com") {
-            add_header Host ${CURRENT_HOST};
-            proxy_pass ${PROXY_PASS};
+            add_header Host ${HEADER_HOST};
+            proxy_pass http://${PROXY_HOST};
         }
         
-        return 301 ${PROXY_PASS}$request_uri;
+        return 301 http://${PROXY_HOST}$request_uri;
     }
 }
