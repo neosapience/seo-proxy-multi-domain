@@ -1,0 +1,18 @@
+server {
+    listen 80;
+    charset utf-8;
+ 
+    location = /health {
+        add_header Content-Type text/plain;
+        return 200 "ok";
+    }
+
+    location / {
+        if ($http_user_agent ~* "kakaostory-og-reader|pinterest|googlebot|yahoo|bingbot|baiduspider|yandex|yeti|Yeti|yodaobot|gigabot|ia_archiver|facebookexternalhit|twitterbot|developers.google.com|kakaotalk-scrap|AdsBot-Naver|developers\.google\.com") {
+            add_header Host ${CURRENT_HOST};
+            proxy_pass ${PROXY_PASS};
+        }
+        
+        return 301 ${PROXY_PASS}$request_uri;
+    }
+}

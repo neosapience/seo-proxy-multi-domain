@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  proxy:
+    image: seo-proxy-multi-domain
+    ports: 
+      - 8080:80
+    env_file: 
+      - app.env
+    volumes: 
+      - ./templates:/etc/nginx/templates
