@@ -9,7 +9,7 @@ server {
 
     location / {
         proxy_set_header Host ${PROXY_HOST_HEADER};
-        if ($http_user_agent ~* "kakaostory-og-reader|pinterest|googlebot|yahoo|bingbot|baiduspider|yandex|yeti|Yeti|yodaobot|gigabot|ia_archiver|facebookexternalhit|twitterbot|developers.google.com|kakaotalk-scrap|AdsBot-Naver|developers\.google\.com") {
+        if ($http_user_agent ~* "kakaostory-og-reader|pinterest|Googlebot|googlebot|yahoo|bingbot|baiduspider|yandex|yeti|Yeti|yodaobot|gigabot|ia_archiver|facebookexternalhit|twitterbot|developers.google.com|kakaotalk-scrap|AdsBot-Naver|developers\.google\.com") {
             proxy_pass http://${PROXY_HOST};
             break;
         }
